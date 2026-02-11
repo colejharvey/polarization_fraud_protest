@@ -65,7 +65,11 @@ This paper builds on a research tradition exploring the conditions under which p
 
 Political polarization has been frequently cited as a danger to democratic governance. By strengthening support for the partisan in-group and intensifying dislike and fear of the out-group, deeper polarization can increase support for democratic backsliding [@orhanRelationshipAffectivePolarization2022]. As a result, people may be willing to trade off democratic values, even if they genuinely support them, to avoid having the opposing side take power [@svolikPolarizationDemocracy2019a;@graham_svolik_2020;@aarslewWhyDonPartisans2022;@kingzetteHowAffectivePolarization2021]. Citizens may come to view their counterparts on the opposing side in exaggerated, stereotypical forms [@levenduskyAmericansNotPartisans2018], and to perceive them as more serious threats to democracy as a result [@krishnarajanRationalizingDemocracyPerceptual2023;@moore_bergExaggeratedMetaperceptionsPredict2020;@braleyWhyVotersWho2023]. This division of society into opposing camps for whom elections become zero-sum games, in turn, makes democratic violations by the incumbent seem increasingly acceptable to their supporters [@arbatliUnitedWeStand2021;@simonovitsDemocraticHypocrisyOutGroup2022]. 
 
-Strategically, incumbents are more likely to resort to multiple tools to influence election outcomes when they perceive they have more to lose as a result of opposition victory. This 'fear effect' may drive increases in manipulation as polarization increases, as is shown in formal modeling by Horz [-@horzElectoralManipulationPolarized2021]. This assumption is also well-grounded in the literature on authoritarian politics, which often holds that the more incumbents stand to lose from defeat, the more vigorously they will defend their positions [@baturoDemocracyDictatorshipTerm2014;@fergussonRealWinnerCurse2021]. As a result, when societies are highly polarized, there are strong incentives for incumbents to grab more power where they can. This includes both the incentive to keep opponents out of power, combined with the expected lack of electoral backlash from one's own supporters for violating democratic principles in a polarized setting.  
+While several studies have shown that increasing ideological polarization makes individuals more likely to support un-democratic candidates [@graham_svolik_2020;@svolikWhenPolarizationTrumps2020], cross-national analysis suggests that affective polarization is most dangerous for democracy [@orhanRelationshipAffectivePolarization2022;@mccoyPolarizationGlobalCrisis2018]. Affective polarization, the tendency for members of an in-group to view the outgroup with animosity [@Iyengar2019], can lead people to view out-partisans as threatening, untrustworthy, and even as illegitimate participants in the democratic process [@mccoyTheoryPerniciousPolarization2019]. 
+
+As a result, when affective polarization is high, incumbents (and their supporters) should have more to fear from losing office. Not only will policy likely move away from their ideal point, but they will also be subject to government by a group perceived as threatening, untrustworthy, and perhaps even unfit to govern. Moreover, this sense of threat may indeed be well-founded; 
+
+Incumbents should thus be more likely to rely on election manipulation to maintain power in polarized settings, where they feel they have more to lose if the opposition wins. This effect is likely in part psychological---fear, anxiety, and anger toward the threatening group are closely connected to affective polarization [@renstromThreatsEmotionsAffective2023]---and in part strategic. In a highly polarized society, the incoming government likely views the outgoing party with the same sense of fear and hostility; as a result, they may be expected to take steps to consolidate its rule. This 'fear effect' may drive increases in manipulation as polarization increases, as is shown in formal modeling by Horz [-@horzElectoralManipulationPolarized2021]. This assumption is also well-grounded in the literature on authoritarian politics, which often holds that the more incumbents stand to lose from defeat, the more vigorously they will defend their positions [@baturoDemocracyDictatorshipTerm2014;@fergussonRealWinnerCurse2021]. As a result, when societies are highly polarized, there are strong incentives for incumbents to grab more power where they can. This effect has two sides: first, the incumbent has incentives to keep opponents out of power, and second, they are likely to have more latitude from their own supporters for violating democratic in the interests of keeping power [@svolikWhenPolarizationTrumps2020].  Crucially, this effect should operate independent of the ideological distance between the two groups.
 
 At the same time, polarization increases the likelihood that opposition supporters will challenge the incumbent. In keeping with intergroup emotions theory [@mackieIntergroupEmotionsExplaining2000], Mason [-@masonUncivilAgreementHow2018] finds that greater issue or partisan polarization among Americans results in greater expression of anger when the group is threatened. Polarization drives partisans to further identify with their party as a social group [@lupuPartyPolarizationMass2015;@lupuPartyBrandsPartisanship2013], intensifying the perceived difference across groups. In turn, more extreme polarization drives intolerance of the other side, along with willingness to engage in protest and suppression of political opponents [@vanprooijenExtremePoliticalBeliefs2017]. Since more polarized individuals are likely to perceive electoral wins and losses as personal victories or defeats [@huddyExpressivePartisanshipCampaign2015], they are likely to consider electoral outcomes very important, and to be more engaged as a result [@wardHowPartisanAffect2019]. Just as higher polarization is associated with greater political protest generally [@bettarelliProtestOnlyNegative2022], and with lower satisfaction with democracy after an electoral defeat [@janssenSweetVictoryBitter2024], I expect it to be associated with more post-election protest. As Miller [-@millerRepublicIfYou2021] shows formally, heightened partisan polarization increases the likelihood that opposition supporters will 'cry wolf,' challenging even clean election wins by the incumbent.
 
@@ -82,7 +86,7 @@ To summarize, polarization has two implications for election manipulation. First
   2) Election manipulation more likely as polarization increases
 - Together, this illustrates how political polarization may in some cases be a confounding variable for the apparent relationship between election manipulation and protest. Ties into Hale's theories of opening and closing, perhaps, with additional implications for -->
 
-Since much of the prior work in this area has been conducted in the formal modeling tradition, a simple formal model is used here to demonstrate these dynamics more clearly, and to demonstrate different predictions. 
+Since much of the prior work in this area has been conducted in the formal modeling tradition, a formal model is used here to demonstrate these dynamics more clearly, and to demonstrate different predictions. The model is deliberately simple and conservative, and aimed at producing empirical hypotheses if electoral popularity and post-election strength are formally decoupled and affective polarization influences parties' incentives for holding office.
 
 ## Formal Model
 
@@ -112,116 +116,205 @@ payoff_table
 
 
 
-While the model includes elements of chance (*p* and *q*), at each node both players are aware of the previous history of the game. Payoffs and probabilities are common knowledge. As a result, the game can be solved using subgame perfect equilibria and backward induction. The opposition has the last move in the game, and in a clean election where the incumbent claims victory, the opposition will choose to protest if its expected utility from challenging the election is greater than that of accepting the results. It will do so if $q(0-c) + (1-q)(1 + B-c) > 0$. Solving this inequality for *q*, the probability that the incumbent will defeat the protesters, yields the result that the opposition will protest when 
-\begin{equation}
-q < q_p = (B - c + 1)/(B+1)
-\end{equation}
+While the model includes elements of chance (*p* and *q*), at each node both players are aware of the previous history of the game. Payoffs and probabilities are common knowledge. As a result, the game can be solved using subgame perfect equilibria and backward induction. The opposition has the last move in the game, and in a clean election where the incumbent claims victory, the opposition will choose to protest if its expected utility from challenging the election is greater than that of accepting the results. It will do so if $q(0-c) + (1-q)(1 + B-c) > 0$. Solving this inequality for *q*, the probability that the incumbent will defeat the protesters, yields the following result.
 
-The same inequality is produced in the alternative subgame, where the incumbent claims victory after manipulating the election. This yields:
-
-\textbf{Lemma 1}: \textit{The opposition will protest when $q < q_p$, regardless of the incumbent's choice of F.}
-
-If $q < q_p$, the opposition will engage in protest regardless of the incumbent's behavior. The incumbent will thus engage in manipulation when it believes that the benefit of moving the game to the protest stage\textemdash that is, the expected utility of prevailing in the conflict\textemdash outweighs the associated costs. Assuming that $f > 0$ and $b_i > -1$, which is true by construction, the incumbent will choose to manipulate when
+\textbf{Lemma 1 (Opposition protest strategy)}: \textit{In any subgame following an incumbent electoral victory, the opposition protests if and only if}
 
 \begin{equation}
-q > q_f = (c)/(B+1)
+q < \frac{(B - c + 1)}{(B+1)} \equiv q_p 
+(\#eq:protest)
 \end{equation}
 
-This yields \textbf{Lemma 2}: \textit{The incumbent will engage in manipulation when $$q > q_f$$.} 
+The opposition’s optimal protest decision is independent of the incumbent’s choice of electoral manipulation *F*.
 
+Turning to the incumbent's decision to manipulate or not, they can anticipate that the opposition will protest when $q < q_p$, regardless of the incumbent's behavior. If the incumbent manipulates, it increases its probability of winning the election by $ f > 0$ and faces the same post-election contest as after a clean victory, conditional on the value of *q*. Manipulation is therefore optimal whenever the expected benefit of increasing the probability of reaching the post-election contest outweighs the expected cost of protest. Assuming that $b_i > -1$, which is true by construction, this yields the following result.
 
-As a result of Lemmas 1 and 2, there are four possible equilibria to the game, based on the value of *q* relative to the thresholds $q_f$ and $q_p$. 
-
-\textbf{Proposition 1}: \textit{When}
-
+\textbf{Lemma 2}: \textit{The incumbent will engage in manipulation if and only if}
 
 \begin{equation}
-q_f > q > q_p
+q > \frac{(c)}{(B+1)} \equiv q_f 
+(\#eq:fraud)
 \end{equation}
 
-\textit{there is a subgame perfect equilibrium in which the opposition prefers no protest and the incumbent prefers a clean election. If} 
+
+As a result of Lemmas 1 and 2, there are four possible equilibria to the game, summarized below.  
+
+\textbf{Proposition 1}: \textit{When the value of holding office B is greater than -1, the game has four unique subgame perfect equilibria, based on the relative ordering of q, $q_f$, and $q_p$. If and only if:}
+
+\begin{align}
+ q_f > q > q_p & \quad \text{the incumbent holds clean elections; no protest.} \\
+ q  > q_f \quad \& \quad q > q_p  & \quad \text{the incumbent manipulates; no protest.} \\
+ q_p > q > q_f & \quad  \text{the incumbent manipulates; the opposition protests.} \\
+ q_p > q \quad \& \quad q_f > q & \quad \text{the incumbent holds clean elections; theopposition protests.}
+\end{align}
 
 
-\begin{equation}
- q > q_f > q_p
-\end{equation}
-
-\textit{there is a subgame perfect equilibrium in which the incumbent prefers to manipulate and the opposition chooses to accept the election result. If}
+Since the denominator of both critical values of *q* are the same, it is straightforward to see that the relationship between the $q_f$ and $q_p$ hinges on the relationship between the degree of polarization $b_i$ and the cost of conflict *c*. As the inequalities show, the equilibrium outcome depends on the relationship between *q*, the incumbent's probability of defeating a protest movement and the ratio between the cost of conflict *c* and the degree of polarization *B*. Figure \@ref(fig:formalfig) illustrates these comparative statics under two different scenarios. In the left-hand panel of the figure, the cost of conflict to both parties is relatively low compared to the possible values for polarization. In the right-hand figure, the cost of conflict is relatively high.
 
 
-\begin{equation}
- q_p > q > q_f
-\end{equation}
+As the figure shows, increasing distance between the groups represented by the incumbent and the opposition increases the size of *B*; holding *c* constant, shifting values of *B* affect the range of *q* for which each equilibrium is possible. (As a reminder, *q* refers to the probability that the incumbent will prevail in an extra-electoral confrontation.) At low levels of polarization, each player is more willing to give up power to the other. As such, the risk of a costly conflict can prevent manipulation by the incumbent and undemocratic attempts to challenge a clean election by the opposition\textemdash the normatively ideal outcome. The right panel of Figure \@ref(fig:formalfig) illustrates how this democratic outcome can hold for all values of *q*, but only when polarization (*B*) is relatively low and the cost of conflict is high.  
 
-\textit{there is a subgame perfect equilibrium in which the incumbent manipulates and the opposition engages in protest. And finally, if}
+As the level of polarization increases to where it meets the cost of conflict, asymmetric outcomes become more likely. This is illustrated in the portion of the right-hand panel of Figure \@ref(fig:formalfig) where the value of *B* is greater than zero but less than the cost of conflict (the vertical dashed line). In this region, stronger incumbents (q > q_fraud) can engage in manipulation in order to make winning more likely, while the opposition is deterred from protesting by the likelihood of losing a post-election conflict. By contrast, weaker incumbents (q < q_fraud) hold clean elections which the opposition nevertheless tries to challenge if they lose. 
 
-\begin{equation}
-q_p > q_f > q
-\end{equation}
+Finally, as polarization increases beyond the cost of conflict (i.e. to the right of the vertical line in both panels of Figure \@ref(fig:formalfig)), mutual confrontation becomes the equilibrium outcome for increasingly wide values of *q*. Extremely strong incumbents can deter protest, and extremely weak incumbents are deterred from manipulation, but for most middle values of incumbent strength manipulation and protest are both optimal strategies. In this equilbrium, both sides are so opposed to the other that they are willing to take significant risks to keep them out of power. The left-hand panel of Figure \@ref(fig:formalfig) illustrates how this is the most common equilibrium strategy in cases where the cost of conflict is low.
 
-\textit{there is a subgame perfect equilibrium in which the opposition chooses to protest a clean election.}
-
-Since the denominator of both critical values of *q* are the same, it is straightforward to see that the relationship between the $q_f$ and $q_p$ hinges on the relationship between the degree of polarization $b_i$ and the cost of conflict *c*. As the inequalities show, the equilibrium outcome depends on the relationship between *q*, the incumbent's probability of defeating a protest movement and the ratio between the cost of conflict *c* and the degree of polarization *B*. Increasing distance between the groups represented by the incumbent and the opposition increases the size of *B*; holding *c* constant, shifting values of *B* affect the range of *q* for which each equilibrium is possible. At low levels of polarization, each player is more willing to give up power to the other. As such, the risk of a costly conflict prevents manipulation by the incumbent and undemocratic attempts to challenge a clean election by the opposition. At very low values of *B* and high costs of conflict, this democratic equilibrium holds for all values of *q*. 
-
-At moderate values of polarization, asymmetric outcomes become more likely. Stronger incumbents can engage in manipulation in order to make winning more likely, while the opposition is deterred from protesting. By contrast, weaker incumbents hold clean elections which the opposition nevertheless tries to challenge if they lose. 
-
-Finally, as polarization increases relative to the cost of conflict, mutual confrontation becomes the equilibrium outcome for most values of *q*. Extremely strong incumbents can deter protest, and extremely weak incumbents are deterred from manipulation, but for most middle values of incumbent strength manipulation and protest are optimal strategies. In this equilbrium, both sides are so opposed to the other that they are willing to take risks to keep them out of power.
-The figure below illustrates these comparative statics.
 
 
 ```{r, echo=FALSE}
-library(ggplot2)
-c <- .25
-B <- seq(0, 3, by = .05)
-q_protest <- (B- c + 1)/(B+1)
-q_fraud <- c/(B+1)
+
+library(ggplot2) 
+c <- .25 
+B <- seq(0, 2, by = .05) 
+q_protest <- (B- c + 1)/(B+1) 
+q_fraud <- c/(B+1) 
 
 fake_data <- data.frame(cbind(B, q_protest, q_fraud))
 
-p_lowcost <- ggplot(fake_data, aes(x = B)) +
-  geom_line(aes(y = q_protest), color = "blue") +
-  geom_line(aes(y = q_fraud), color = "red") + 
-  geom_vline(xintercept = c, linetype = 2) +
-  coord_cartesian(ylim = c(0, 1)) + theme_bw() + labs(y = "q", title = "(a) Low-cost equilibria (c = .25)")
+# Create grid over parameter space
+q_vals <- seq(0, 1, by = .01)
+
+grid <- expand.grid(B = B, q = q_vals)
+
+# Compute thresholds
+grid$q_protest <- (grid$B - c + 1)/(grid$B + 1)
+grid$q_fraud   <- c/(grid$B + 1)
+
+# Classify equilibrium region
+grid <- grid %>%
+  mutate(equilibrium = case_when(
+    q_fraud > q & q > q_protest ~ "Clean / No Protest",
+    q > q_fraud & q > q_protest ~ "Manipulate / No Protest",
+    q_protest > q & q > q_fraud ~ "Manipulate / Protest",
+    q < q_protest & q < q_fraud ~ "Clean / Protest"
+  ))
+
 ```
 
 ```{r, include=FALSE, echo=FALSE}
 
-#When back, make this a long dataset with line_name as a variable and "Protest" and "Fraud" as values
-library(ggplot2)
-c <- .5
-B <- seq(0, 3, by = .05)
-q_protest <- (B- c + 1)/(B+1)
-q_fraud <- c/(B+1)
+p_lowcost <- ggplot() +
 
-fake_data <- data.frame(cbind(B, q_protest, q_fraud))
+  # Shaded regions
+  geom_raster(data = grid,
+              aes(x = B, y = q, fill = equilibrium),
+              alpha = 0.4) +
 
-ggplot(fake_data, aes(x = B)) +
-  geom_line(aes(y = q_protest), color = "blue") +
-  geom_line(aes(y = q_fraud), color = "red") + 
+  # Threshold curves
+ geom_line(data = fake_data,
+          aes(x = B, y = q_protest),
+          color = "black", size = .9) +
+
+geom_line(data = fake_data,
+          aes(x = B, y = q_fraud),
+          color = "black", linetype = "dashed", size = .9) +
+
   geom_vline(xintercept = c, linetype = 2) +
-  coord_cartesian(ylim = c(0, 1)) +
-  labs(y = "q")
+
+  coord_cartesian(ylim = c(0,1)) +
+  theme_bw() +
+  labs(y = "q",
+       title = "(a) Low-cost equilibria (c = .25)",
+       fill = "Equilibrium") +
+
+  scale_fill_manual(values = c(
+  "Clean / No Protest" = "white",
+  "Manipulate / No Protest" = "grey75",
+  "Manipulate / Protest" = "grey45",
+  "Clean / Protest" = "black"
+)) + 
+  geom_text(data = data.frame(
+  B = c(.5, 1, .5),
+  q = c(.93, .5, .085),
+  label = c("Manipulate;\nNo Protest",
+            "Manipulate;\nProtest",
+            "Clean;\nProtest")
+),
+aes(B, q, label = label),
+size = 3.5) + 
+  guides(fill = "none")
+
+
 ```
 
 ```{r, echo=FALSE}
-library(ggplot2)
 c <- 1
-B <- seq(0, 3, by = .05)
-q_protest <- (B- c + 1)/(B+1)
-q_fraud <- c/(B+1)
+B <- seq(0, 2, length.out = 500) 
+q_protest <- (B- c + 1)/(B+1) 
+q_fraud <- c/(B+1) 
 
 fake_data <- data.frame(cbind(B, q_protest, q_fraud))
 
-fake_data <- fake_data %>% pivot_longer(cols=c('q_protest', 'q_fraud'),
-                    names_to='q_type',
-                    values_to='yvals')
+# Create grid over parameter space
+q_vals <- seq(0, 1, length.out = 500)
 
-p_highcost <- ggplot(fake_data, aes(x = B, y = yvals, color = q_type)) + geom_line() +
-  #geom_line(aes(y = yvals, color = "q_type")) +
-  #geom_line(aes(y = q_fraud), color = "red") + 
+grid <- expand.grid(B = B, q = q_vals)
+
+# Compute thresholds
+grid$q_protest <- (grid$B - c + 1)/(grid$B + 1)
+grid$q_fraud   <- c/(grid$B + 1)
+
+# Classify equilibrium region
+grid <- grid %>%
+  mutate(equilibrium = case_when(
+    q_fraud > q & q > q_protest ~ "Clean / No Protest",
+    q > q_fraud & q > q_protest ~ "Manipulate / No Protest",
+    q_protest > q & q > q_fraud ~ "Manipulate / Protest",
+    q < q_protest & q < q_fraud ~ "Clean / Protest"
+  ))
+
+
+p_highcost <- ggplot() +
+
+  # Shaded regions
+  geom_raster(data = grid,
+              aes(x = B, y = q, fill = equilibrium),
+              alpha = 0.4) +
+
+  # Threshold curves
+ geom_line(data = fake_data,
+          aes(x = B, y = q_protest, linetype = "q_p(B)"),
+          color = "black", size = .9) +
+
+geom_line(data = fake_data,
+          aes(x = B, y = q_fraud, linetype = "q_f(B)"),
+          color = "black", size = .9) +
+
   geom_vline(xintercept = c, linetype = 2) +
-  coord_cartesian(ylim = c(0, 1)) + theme_bw() + labs(y = NULL, title =  "(b) High-cost equilibria (c = 1)", color = "q threshold")
+
+  coord_cartesian(ylim = c(0,1)) +
+  theme_bw() +
+  labs(y = "q",
+       title = "(a) Low-cost equilibria (c = .25)",
+       fill = "Equilibrium") +
+
+  scale_fill_manual(values = c(
+  "Clean / No Protest" = "white",
+  "Manipulate / No Protest" = "grey75",
+  "Manipulate / Protest" = "grey45",
+  "Clean / Protest" = "black"
+)) + 
+  scale_linetype_manual(
+  name = "Threshold",
+  values = c(
+    "q_p(B)" = "solid",
+    "q_f(B)" = "dashed"
+  ),
+  labels = c(
+    expression(q[p](B)),
+    expression(q[f](B))
+  )
+) +
+  geom_text(data = data.frame(
+  B = c(.2, 1.2, 1.75, 1.2),
+  q = c(.5, .8, .5, .2),
+  label = c("Clean;\nNo Protest",
+    "Manipulate;\nNo Protest",
+            "Manipulate;\nProtest",
+            "Clean;\nProtest")
+),
+aes(B, q, label = label),
+size = 3.5) + 
+  guides(fill = "none")
 ```
 
 ```{r formalfig, echo=FALSE, fig.cap="Equilibrium outcomes.", fig.show="hold", out.width="50%"}
@@ -279,18 +372,6 @@ Finally, the formal model makes one additional hypotheses: successful deterrence
 
 # Data and methods
 
-These propositions are tested using combined data from the Varieties of Democracy (V-Dem) project, version 14 [@coppedge2024v], the National Elections across Democracy and Autocracy (NELDA) dataset [@hyde_2012_marinov], and the Electoral Contention and Violence (ECAV) dataset [@Daxecker2019]. The combined, full dataset includes 1,502 election periods in 149 countries, from 1990 to 2012.  The time range for the dataset is bounded by the ECAV data, which is used to determine the number of post-election protest. Because the question at hand concerns electoral protest, country-years with no elections are not included. This also means that country-years under closed authoritarian rule (i.e. where no national elections are held) are excluded using the V-Dem variable 'v2x_regime' (country-years are included if the variable does not equal 0). The included cases thus encompass electoral authoritarian regimes, electoral democracies, and liberal democracies. 
-
-## Dependent variables
-
-The first dependent variable in this study, used to test Hypothesis 1, is simply the number of *electoral protests* that occurred after each election observation in the dataset. This count variable is taken from the ECAV dataset, which records an event only if it was public, contentious, and substantively related to an election. Post-election events are coded from election day to 90 days after the election. For this paper, I included only ECAV events coded as "protests," "occupations," or "blockades," and excluded more violent events coded as (e.g.) clashes, riots, or attacks. The total number of events recorded for each window in ECAV makes up the *electoral protest* variable.
-
-The ECAV data is more comprehensive than the binary measure of protest included in the NELDA dataset; ECAV records 311 protested elections, while NELDA counts only 237.^[As a robustness check in the appendix, I also use a binary protest variable that takes on a value of 1 if *either* NELDA or ECAV report an instance of protest.] Since this is a count variable, I model it using negative binomial regression. In addition, since elections in this dataset are nested within countries, I include a model with fixed effects by country as a robustness check.
-
-The other hypotheses in this study refer to the level of protest when an election is 'clean' or 'manipulated.' In the case of protested elections, the dependent variables are also count variables\textemdash the number of post-election protests. However, whether they occurred in a clean or manipulated election is determined according to the coding rules discussed below, based on the 'v2xel_frefair' variable from V-Dem.  This is a comprehensive measure of overall election integrity, which aggregates measures of electoral management body autonomy and capacity, the integrity of the voter registry, the severity of vote-buying, election fraud, intimidation, and violence, as well as coders' overall evaluation of the election as free and fair. This kind of comprehensive indicator is best suited for the research question, given the variety of regimes included in the dataset. Prior research has shown that the type of election manipulation that governments employ is sensitive to several factors, especially the degree of political openness and competition [@Harvey2019;@asunka2017electoral]. Consequently, while I expect that polarization will be associated with lower election integrity across the board, the specific form of manipulation utilized might vary across countries. For example, in a highly polarized but authoritarian country, we might expect to see more fraud; while in a more democratic country, more legal forms of bias might be introduced. The overall measure will capture both sorts of expected movement. 
-
-First, elections are coded as either clean or manipulated based on the 4-point categorical version of the 'e_v2xel_frefair' variable. *Clean election* is a binary variable that takes on a value of 1 if 'e_v2xel_frefair_4C' equals 1, and 0 otherwise.^[The V-Dem codebook states that values of 1 can be considered "Democratic," while values of 0 can be considered "Autocratic", 0.33 as "Electoral Authoritarian", and 0.67 as "Minimally Democratic".] *Clean protested election* takes the value of the number of post-election protests when clean election = 1 and 0 otherwise. *Manipulated protested election* takes on the number of post-election protests when *clean election* = 0 and 0 otherwise. These count variables are analyzed using negative binomial regression models. Lastly, unprotested outcomes are treated as binary variables. *Clean unprotested election* takes on a value of 1 when the number of protests is zero and *clean election* = 1. *Manipulated unprotested election* takes on a value of 1 when the number of protests is 0 and *clean election* = 0. These variables are modeled using logistic regression.
-
 
 
 ```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
@@ -304,9 +385,54 @@ vdem_data <- read.csv(here("Data", "vdem_protest.csv"))
 
 vdem_data <- vdem_data %>% mutate(winner.share.upd = ifelse(is.na(winner.share.upd) == T, winner.margin, winner.share.upd))
 
+
+### Exclude old OECD cases, which are not included in ECAV and thus have 0 protests by artefact and not necessarily in reality.
+
+
+vdem_data <- vdem_data %>% mutate(old_oecd = ifelse(country == "United Kingdom" | country == "Belgium" |
+                                                      country == "Austria" | country == "Denmark" |
+                                                      country == "Finland" | country == "Iceland" | 
+                                                      country == "Luxembourg" | country == "New Zealand" |
+                                                      country == "Norway" | country == "United States of America" |
+                                                      country == "Portugal" | country == "Sweden" |
+                                                      country == "Switzerland" | country == "Canada" |
+                                                      country == "Australia" | country == "German Federal Republic" |
+                                                      country == "Italy" | country == "Ireland" |
+                                                      country == "Japan" | country == "Netherlands" |
+                                                      country == "Spain" | country == "Greece" | country == "France", 1, 0))
+
+vdem_data <- vdem_data %>% filter(old_oecd == 0)
+
+
+## Other subsets
 vdem_libdems <- vdem_data %>% filter(v2x_regime == 3)
 vdem_data_nolib <- vdem_data %>% filter(v2x_regime < 3)
+
 ```
+
+These propositions are tested using combined data from the Varieties of Democracy (V-Dem) project, version 14 [@coppedge2024v], the National Elections across Democracy and Autocracy (NELDA) dataset [@hyde_2012_marinov], and the Electoral Contention and Violence (ECAV) dataset [@Daxecker2019]. The combined, full dataset includes 1,502 election periods in 149 countries, from 1990 to 2012.  The time range for the dataset is bounded by the ECAV data, which is used to determine the number of post-election protest. Because the question at hand concerns electoral protest, country-years with no elections are not included. This also means that country-years under closed authoritarian rule (i.e. where no national elections are held) are excluded using the V-Dem variable 'v2x_regime' (country-years are included if the variable does not equal 0). The included cases thus encompass electoral authoritarian regimes, electoral democracies, and some liberal democracies (as discussed in the subsequent section). 
+
+## Dependent variables
+
+The first dependent variable in this study, used to test Hypothesis 1, is simply the number of *electoral protests* that occurred after each election observation in the dataset. This count variable is taken from the ECAV dataset, which records an event only if it was public, contentious, and substantively related to an election. Post-election events are coded from election day to 90 days after the election. For this paper, I included only ECAV events coded as "protests," "occupations," or "blockades," and excluded more violent events coded as (e.g.) clashes, riots, or attacks. The total number of events recorded for each window in ECAV makes up the *electoral protest* variable.
+
+The ECAV data is more comprehensive than the binary measure of protest included in the NELDA dataset; ECAV records 311 protested elections, while NELDA counts only 237.^[As a robustness check in the appendix, I also use a binary protest variable that takes on a value of 1 if *either* NELDA or ECAV report an instance of protest.] Since this is a count variable, I model it using negative binomial regression. In addition, since elections in this dataset are nested within countries, I include a model with fixed effects by country as a robustness check. 
+
+One limitation of ECAV is that, by aiming to exclude 'consolidated' democracies, it excludes several of the oldest liberal democracies. The coding rule in ECAV is that states which were members of the OECD in 1990 are excluded (with the exception of Turkey, which is included). As a result, the United States, Canada, Australia, New Zealand, Japan, and most of Western Europe are excluded. Other countries where the quality of democracy deepened during the study period, such as the new eastern members of the European Union, South Korea, and Chile, are included. Consequently, the results of this study should be interpret with caution regarding the oldest liberal democracies, though not necessarily with regard to liberal democracies generally. Figure \@ref(fig:demhist) shows the distribution of regimes according to the V-Dem index of liberal democracy (v2x_libdem). As the figure shows, more liberal democracies are well-represented in the data, despite the exclusion of the longest-established cases from ECAV.
+
+```{r demhist, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="Distribution of cases by V-Dem liberal democracy index", out.width="70%", fig.align='center'}
+ggplot(vdem_data, aes(v2x_libdem)) +
+  geom_histogram() + 
+  labs(x = "Liberal democracy index (v2x_libdem)", y = "Count") +
+  theme_bw()
+```
+
+
+The other hypotheses in this study refer to the level of protest when an election is 'clean' or 'manipulated.' In the case of protested elections, the dependent variables are also count variables\textemdash the number of post-election protests. However, whether they occurred in a clean or manipulated election is determined according to the coding rules discussed below, based on the 'v2xel_frefair' variable from V-Dem.  This is a comprehensive measure of overall election integrity, which aggregates measures of electoral management body autonomy and capacity, the integrity of the voter registry, the severity of vote-buying, election fraud, intimidation, and violence, as well as coders' overall evaluation of the election as free and fair. This kind of comprehensive indicator is best suited for the research question, given the variety of regimes included in the dataset. Prior research has shown that the type of election manipulation that governments employ is sensitive to several factors, especially the degree of political openness and competition [@Harvey2019;@asunka2017electoral]. Consequently, while I expect that polarization will be associated with lower election integrity across the board, the specific form of manipulation utilized might vary across countries. For example, in a highly polarized but authoritarian country, we might expect to see more fraud; while in a more democratic country, more legal forms of bias might be introduced. The overall measure will capture both sorts of expected movement. 
+
+First, elections are coded as either clean or manipulated based on the 4-point categorical version of the 'e_v2xel_frefair' variable. *Clean election* is a binary variable that takes on a value of 1 if 'e_v2xel_frefair_4C' equals 1, and 0 otherwise.^[The V-Dem codebook states that values of 1 can be considered "Democratic," while values of 0 can be considered "Autocratic", 0.33 as "Electoral Authoritarian", and 0.67 as "Minimally Democratic".] *Clean protested election* takes the value of the number of post-election protests when clean election = 1 and 0 otherwise. his coding scheme allows for the variable to take on a positive value regardless of whether the incumbent or the challenger protests the election outcome. *Manipulated protested election* takes on the number of post-election protests when *clean election* = 0 and 0 otherwise. These count variables are analyzed using negative binomial regression models. Lastly, unprotested outcomes are treated as binary variables. *Clean unprotested election* takes on a value of 1 when the number of protests is zero and *clean election* = 1. *Manipulated unprotested election* takes on a value of 1 when the number of protests is 0 and *clean election* = 0. These variables are modeled using logistic regression.
+
+
 
 ## Explanatory variable
 
@@ -317,34 +443,33 @@ To model the cost of post-election conflict, I rely simply on the *GDP per capit
 
 ## Control variables
 
-Control variables are included to account for possible confounders of polarization and protest. Since protest is more likely when the winner's margins of victory are low [@magaloni2006], I include *winner's vote-share* in the models. This variable is derived from V-Dem variables 'v2elvotlrg' and 'v2ellovtlg' for presidential and legislative elections, respectively, with updates to missing values by the author. *Presidential* and *off-schedule elections*, and whether or not the incumbent executive faced *term-limits* are coded using binary variables from NELDA. To account for the possibility that the degree of physical repression can affect protest risk [@Davenport2019], a measure of *physical integrity* rights from V-Dem is included ('v2x_clphy'). Since protest may be more likely in places with greater population density, the *urban population share* is also included, using a measure taken from the World Bank [@worldbank_urban]. Finally, to account for general political openness and competition, I include a modified version of V-Dem's additive polyarchy index ('v2x_api'). This index incorporates measures of civil society openness and capacity to organize, media freedom and freedom of expression, the extent of suffrage, and the integrity of elections; to avoid built-in multicollinearity with the categorical variables that are constructed based on the level of election integrity, I subtract the electoral-integrity component of the index. I label this variable *democratic openness*. For models of the number of post-election protests, *election integrity index*, the continuous version of the 'e_v2xel_frefair' is used as an control. Since the age of a regime (authoritarian or democratic) might affect political stability [@svolik_politics_2012;@Svolik2008] as well as the ability to influence election outcomes, I include a control for the number of years the country has been under the same political regime. Lastly, some models include the number of *pre-election protests* recorded in ECAV as a control variable.
+Control variables are included to account for possible confounders of polarization and protest. Since protest is more likely when the winner's margins of victory are low [@magaloni2006], I include *winner's vote-share* in the models. This variable is derived from V-Dem variables 'v2elvotlrg' and 'v2ellovtlg' for executive and legislative elections, respectively, with updates to missing values by the author. *Executive* and *off-schedule elections*, and whether or not the incumbent executive faced *term-limits* are coded using binary variables from NELDA. To account for the possibility that the degree of physical repression can affect protest risk [@Davenport2019], a measure of *physical integrity* rights from V-Dem is included ('v2x_clphy'). Since protest may be more likely in places with greater population density, the *urban population share* is also included, using a measure taken from the World Bank [@worldbank_urban]. Finally, to account for general political openness and competition, I include a modified version of V-Dem's additive polyarchy index ('v2x_api'). This index incorporates measures of civil society openness and capacity to organize, media freedom and freedom of expression, the extent of suffrage, and the integrity of elections; to avoid built-in multicollinearity with the categorical variables that are constructed based on the level of election integrity, I subtract the electoral-integrity component of the index. I label this variable *democratic openness*. For models of the number of post-election protests, *election integrity index*, the continuous version of the 'e_v2xel_frefair' is used as an control. Lastly, some models include the number of *pre-election protests* recorded in ECAV as a control variable.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 vdem_data <- vdem_data %>% mutate(any_protest = ifelse(d.events.num > 0, 1, 0))
 vdem_data <- vdem_data %>% mutate(protest_comprehensive = ifelse(protests == 1 | any_protest == 1, 1, 0))
 vdem_data <- vdem_data %>% mutate(polsq = v2cacamps.1lag^2)
-vdem_data <- vdem_data %>% mutate(term_limited_election = ifelse(inc.termlimit == "no" | inc.termlimit == "N/A", 0, 1)) #This codes 3 'unclear' cases as yesses, and N/A's (not applicable; parliamentary elections) as nos.
 
 #vdem_data <- vdem_data %>% mutate(no_size = ifelse(max_size == 0, 1, 0))
 
 
 
-model.protest.count <- glm.nb(n.events.post ~  winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag + regime_age + term_limited_election, data = vdem_data )
+model.protest.count <- glm.nb(n.events.post ~  winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag, data = vdem_data )
 #summary(model.protest.count)
 
 
-model.protest.count2 <- glm.nb(n.events.post ~ v2xel_frefair + winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag + regime_age + term_limited_election, data = vdem_data )
+model.protest.count2 <- glm.nb(n.events.post ~ v2xel_frefair + winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag, data = vdem_data )
 #summary(model.protest.count2)
 
-model.protest.count3 <- glm.nb(n.events.post ~ v2xel_frefair + winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag + regime_age + term_limited_election, data = vdem_data  %>% filter(inc.lose == 0))
+model.protest.count3 <- glm.nb(n.events.post ~ v2xel_frefair + winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag, data = vdem_data  %>% filter(inc.lose == 0))
 #summary(model.protest.count2)
 
 
-model.protest.count4 <- glm.nb(n.events.post ~ v2xel_frefair + winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag + regime_age +term_limited_election +  n.events.pre, data = vdem_data)
+model.protest.count4 <- glm.nb(n.events.post ~ v2xel_frefair + winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag + n.events.pre, data = vdem_data)
 
 ## With FE
 
-model.protest.count.fe <- glm.nb(n.events.post ~ v2xel_frefair +  winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag + regime_age + term_limited_election + as.factor(country), data = vdem_data)
+model.protest.count.fe <- glm.nb(n.events.post ~ v2xel_frefair +  winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag  + as.factor(country), data = vdem_data)
 #summary(model.protest.int.fe)
 #sjPlot::plot_model(model.protest.int.fe, type = "int")
 
@@ -374,7 +499,8 @@ modelsummary::modelsummary(models, stars = T, gof_omit = c("F|RMSE"), title = "N
                                "polyarchy_noelex.1lag" = "Democracy index (lag)",
                                "inc.termlimit.num" = "Term-limited incumbent",
                                "gdpgro.1lag" = "GDP per capita (lagged)",
-                               "v2cacamps.1lag" = "Affective polarization (lag)"),
+                               "v2cacamps.1lag" = "Affective polarization (lag)",
+                               "v2elintmon" = "Intl. monitors"),
                            add_rows = felabel)
 
 ```
@@ -382,7 +508,7 @@ modelsummary::modelsummary(models, stars = T, gof_omit = c("F|RMSE"), title = "N
 
 Table \@ref(tab:table-protest) reports the results of the models of post-election protest, for tests of Hypothesis 1. Models 1, 2, 4 and 5 include all observations. Model 1 excludes a control variable for election integrity, which is included in all subsequent models. As a more restrictive test, Model 3 includes only those observations where the incumbent initially claimed victory. Model 4 includes a control for the number of pre-election protests. Finally Model 5 includes fixed effects by country. 
 
-In each of these specifications, affective polarization is associated with an increase in the number of expected post-election protests. The effect is substantively sizable as well as statistically significant. Taking the coefficient for polarization reported in Model 5 (the fixed-effects model), a one-unit increase in affective polarization is associated with a 97% increase in the expected number of post-election protests, on average. A one-unit increase is less than one standard deviation of the variable (1.22). This effect is persistent across models, even when controlling for the level of election integrity, the degree of democratic openness, the level of repression, the winner's claimed vote-share, and the number of pre-election protests.
+In each of these specifications, affective polarization is associated with an increase in the number of expected post-election protests. The effect is substantively sizable as well as statistically significant. Taking the coefficient for polarization reported in Model 5 (the fixed-effects model), a one-unit increase in affective polarization is associated with a 97% increase in the expected number of post-election protests, on average. A one-unit increase is less than one standard deviation of the variable (1.22).^[As a benchmark, the United States experienced a one-unit increase in this measure roughly between 1990 and 2009, and another one-unit increase between 2009 and 2016. Brazil (another case of increasing polarization, electoral protest, and allegations of manipulation) sees a roughly one-unit increase between 2008 and 2014, and again between 2014 and 2018.] This effect is persistent across models, even when controlling for the level of election integrity, the degree of democratic openness, the level of repression, the winner's claimed vote-share, and the number of pre-election protests.
 
 
 
@@ -424,24 +550,27 @@ predictedcounts <- predict(model_wolf_base, list(v2cacamps.1lag=polvalues, polsq
 #plot(polvalues, predictedcounts)
 
 
-model_wolf <- glm.nb(protested_clean_count ~ winner.share.upd + polyarchy_noelex.1lag  + physinteg.1lag + unscheduled_election + presidential +  v2cacamps.1lag + I(v2cacamps.1lag^2) + regime_age + term_limited_election, data = vdem_data )
+model_wolf <- glm.nb(protested_clean_count ~ winner.share.upd + gdpgro.1lag  + polyarchy_noelex.1lag  + physinteg.1lag + unscheduled_election + presidential +  v2cacamps.1lag + I(v2cacamps.1lag^2), data = vdem_data )
 
 
 
 
-model_clean <- glm(clean_elex ~ winner.share.upd + polyarchy_noelex.1lag + presidential + physinteg.1lag + gdpgro.1lag +   unscheduled_election  +v2cacamps.1lag + regime_age + term_limited_election, data = vdem_data)
+model_clean <- glm(clean_elex ~ winner.share.upd + polyarchy_noelex.1lag + presidential + physinteg.1lag + gdpgro.1lag  +   unscheduled_election  +v2cacamps.1lag, data = vdem_data)
 
 
 
 
-model_success_base <- glm(clean_no_protest ~ winner.share.upd + gdpgro.1lag + polyarchy_noelex.1lag + presidential + physinteg.1lag +    unscheduled_election  +v2cacamps.1lag + regime_age + term_limited_election, data = vdem_data %>% filter(gdpgro.1lag < 75)) #Excludes outlier Luxembourg
+model_success_base <- glm(clean_no_protest ~ winner.share.upd + gdpgro.1lag  + polyarchy_noelex.1lag + presidential + physinteg.1lag +    unscheduled_election  +v2cacamps.1lag, data = vdem_data %>% filter(gdpgro.1lag < 75)) #Excludes outlier Luxembourg
 
-model_success <- glm(clean_no_protest ~ winner.share.upd + gdpgro.1lag + polyarchy_noelex.1lag + presidential + physinteg.1lag +    unscheduled_election + regime_age +v2cacamps.1lag*gdpgro.1lag + term_limited_election, data = vdem_data %>% filter(gdpgro.1lag < 75))
+model_success <- glm(clean_no_protest ~ winner.share.upd + gdpgro.1lag  + polyarchy_noelex.1lag + presidential + physinteg.1lag +    unscheduled_election  +v2cacamps.1lag*gdpgro.1lag, data = vdem_data %>% filter(gdpgro.1lag < 75))
 
-model_dominance <- glm(rigged_no_protest ~ winner.share.upd + polyarchy_noelex.1lag + presidential + physinteg.1lag +    unscheduled_election + regime_age + term_limited_election +v2cacamps.1lag + polsq, data = vdem_data)
+model_dominance <- glm(rigged_no_protest ~ winner.share.upd + gdpgro.1lag  + polyarchy_noelex.1lag + presidential + physinteg.1lag +    unscheduled_election  +v2cacamps.1lag + polsq, data = vdem_data)
 
-model_conflict <- glm.nb(mutual_conflict ~ winner.share.upd  + polyarchy_noelex.1lag + presidential + physinteg.1lag  +  unscheduled_election + regime_age + term_limited_election +v2cacamps.1lag, data = vdem_data)
+model_conflict <- glm.nb(mutual_conflict ~ winner.share.upd + gdpgro.1lag  + polyarchy_noelex.1lag + presidential + physinteg.1lag  +  unscheduled_election  +v2cacamps.1lag, data = vdem_data)
 ```
+
+
+
 
 ```{r, echo=FALSE}
 models <- list()
@@ -470,7 +599,7 @@ The theory's predictions are also borne out with regard to the negative binomial
 
 Model 9 shows that the number of protests following a clean election follows the predicted curvilinear relationship with affective polarization. At low levels of polarization, such outcomes are unlikely. The expected number of protests following a manipulated election increases at moderate levels of polarization, before declining again. Figure \@ref(fig:wolfplot) illustrates the predicted effects. This effect is statistically significant when comparing the largest predicted effects in the middle of the distribution of affective polarization with the minimal effects at low polarization. Note that the y-axis is on the response scale for the negative binomial model; it refers to the predicted effect, not the predicted number of protests.
 
-Lastly, returning to Model 7, Hypothesis 5 appears supported\textemdash the effect of polarization on successful deterrence is conditional on the level of economic development. In particular, H5 posits that when economic development is higher, the negative effect of polarization will be more muted. This hypothesis is also supported. Figure \@ref(fig:gdpplot) shows that the marginal effect of low versus high polarization on successful deterrence is significantly different at low levels of economic development, but not at high levels. Each point in the figure represents an observation plotted by its GDP per capita and the incidence of a clean, unprotested election.^[This plot was produced using the `marginaleffects` package in R [@marginaleffects_pkg].] The distribution of observations highlights that the difference is significant for a large proportion of regimes in the dataset, where the median value of *GDP per capita* is 7.1.    
+Lastly, returning to Model 7, Hypothesis 5 appears supported\textemdash the effect of polarization on successful deterrence is conditional on the level of economic development. In particular, H5 posits that when economic development is higher, the negative effect of polarization will be more muted. This hypothesis is also supported. Figure \@ref(fig:gdpplot) shows the effect of GDP per capita on a pro-democratic outcome (a clean, un-protest election), conditional on the degree of political polarization. The resutls are just as predicted. For low-income cases, polarization has no effect: the likelihood of clean, unprotested election is consistently low for all values of polarization. On the other hand, for high per capita income cases, polarization matters. When polarization is low, the likelihood of a successful democratic election is approximately fifty percent. As polarization increases, the likelihood of such a normatively desirable outcome declines significantly to approximately thirty percent. The selected values of GPD per capita reflect one standard deviation above and below the mean. Each point in the figure represents an observation plotted by its GDP per capita and whether or not a clean, unprotested election occurred in that case. These histograms demonstrate common support across most of the range of the *polarization variable*, but also highlight that there are no cases of clean, unprotested elections at higher levels of polarization in this dataset.^[This plot was produced using the `marginaleffects` package in R [@marginaleffects_pkg].]    
 
 ```{r gdpplot, warning=FALSE, message=FALSE, echo=FALSE, fig.cap="Predicted value of 'successful deterrence' (Model 7)"}
 library(marginaleffects)
@@ -478,18 +607,19 @@ library(ggdist)
 library(ggplot2)
 
 
-gdp_plot <- plot_predictions(model_success, condition = c("gdpgro.1lag", v2cacamps.1lag = list(c(-1.49, .94)))) +
+gdp_plot <- plot_predictions(model_success, condition = c("v2cacamps.1lag", gdpgro.1lag = list(c(.33, 15.6)))) +
     geom_dots(
         alpha = .8,
         scale = .3,
         pch = 24,
         data = vdem_data, aes(
-        x = gdpgro.1lag,
+        x = v2cacamps.1lag,
         y = clean_no_protest,
         side = ifelse(clean_no_protest == 1, "bottom", "top")))
 
-gdp_plot + coord_cartesian(xlim = c(0, 40), ylim = c(0, 1)) + labs(x = "GDP per capita", y = "Predicted value", color = "Polarization", fill = "Polarization") + theme_bw()
+gdp_plot + coord_cartesian(xlim = c(-3.5, 3.05), ylim = c(0, 1)) + labs(x = "Polarization (lag)", y = "Predicted value", color = "Log GDP (lag)", fill = "Log GDP (lag)") + theme_bw()
 ```
+
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 library(ggeffects)
@@ -514,7 +644,6 @@ ggplot(mydf, aes(x = x)) +
 ```
 
  
-
 
 
 ```{r wolfplot, fig.cap="Predicted effect of polarization on number of post-election protests (manipulated elections)", echo=FALSE, message=FALSE, warning=FALSE}
@@ -565,6 +694,8 @@ An alternative set of theories has considered the obstacles that limit incumbent
 Free and fair elections are, of course, the linchpin of democratic government. The implications of this approach go beyond elections themselves, as a result, and extend to the stability of democratic and non-democratic regimes. Polarization appears to not only incentivize the election of anti-democratic candidates, as prior research has identified. In addition, it appears to drive election manipulation by incumbents and anti-democratic protest by opposition groups, narrowing the range of regimes for which a democratic, accepted election is possible. Democracy, in other words, cannot be assumed to be self-enforcing when polarization is elevated [@fearon_self-enforcing_2011]. 
 
 Instead, other explanations for democratic resilience should be studied and, for pro-democracy practitioners, implemented. The results presented in this paper point toward the importance of overlapping safeguards. When polarization is high, increasing the likelihood of election manipulation, *de facto* independent courts may be able to moderate a decline in election integrity [@Harvey2022]. The role that other institutional features may play in fracturing the relationship between manipulation-desiring principals and manipulation-producing agents should also be considered [@rundlett2016deliver]. One such set of institutions may be those that limit executive patronage powers in democracies [@Harvey2019], though others are possible.  
+
+One noteworthy aspect of the model, and its empirical support, is that costly conflict can occur even in the absence of asymmetric information. 'Crying wolf'  scenarios can occur even when the incumbent avoids manipulation, and the 'mutual conflict' scenario can occur even when the incumbent anticipates protests will follow his efforts to rig the election. This is in some ways a conservative approach; adaptations of this model that allow for imperfect information about manipulation would only serve to make normatively bad outcomes more likely, and 'successful deterrence' less likely. This also helps explain some historical instances that are puzzling when viewed from a certain perspective. For instance, Ukraine's Orange Revolution happened in a polarized society, obvious pre-election mobilization by the opposition, and widespread fraud by the incumbent. This is a puzzling outcome if we expect the incumbent to back down in the face of costly protest (and subsequent defeat). Yet if polarization makes electoral loss untenable, incumbent should be expected to go to great lengths to 'gamble for resurrection.'  
 
 A broader question for future research concerns the relationship between polarization and democracy itself. Is the current secular increase in polarization a natural consequence of democratic competition? Democratization necessarily requires the inclusion of new groups in the political process, through either increased participation of voters or increased competition among parties [@dahlPolyarchyParticipationOpposition1971]. Social cleavages that had been suppressed under non-democratic government, or subsumed by the pro- and anti-regime cleavage [@Schedler2002], can be cultivated by political parties and candidates. On the one hand, this is an essential feature of democracy. However, any of these cleavages\textemdash religious, ethnic, cultural, or constructed (e.g. 'people' vs 'elites')\textemdash can become the basis for entrenched polarization; indeed, politicians often have short-term interests in fostering such polarization [@mccoyTheoryPerniciousPolarization2019]. This paper indicates that unraveling this question is also important for understanding election integrity in general. 
 
@@ -635,5 +766,129 @@ When polarization is low, protests occur against weaker incumbents more than str
 
 Incumbent will manipulate when $$(p+f)(q)(1 + B-c) + (p+f)(1-q)(0-c)  > (pq)(1 +B-c)+(p(1-q)(0-c))$$ and hold a clean election otherwise. 
 
+
+## Zero inflation
+
+```{r protestcount, fig.cap="Histogram of post-election protest events", echo=FALSE, message=FALSE, warning=FALSE}
+ggplot(vdem_data, mapping = aes(x = n.events.post)) +
+  geom_histogram(binwidth = 1) +
+  labs(x = "N. protest events") + theme_bw()
+```
+
+```{r vuong, echo=FALSE, message=FALSE}
+model.protest.count <- glm.nb(n.events.post ~  winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +   polyarchy_noelex.1lag + gdpgro.1lag, data = vdem_data )
+
+model.protest.zinb <- zeroinfl(n.events.post ~  winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   + polyarchy_noelex.1lag + gdpgro.1lag | v2xel_frefair + gdpgro.1lag, data = vdem_data, dist = "negbin")
+vuong(model.protest.count, model.protest.zinb)
+```
+
+One of several hypotheses tested in this study is the prediction that the number of post-election protests will increase as political polarization increases. Negative binomial models are used to test this prediction in the main text. However, since the large majority of elections go un-protested, there is a very large percentage of zeroes in the data. Figure \@ref(fig:protestcount) shows this distribution. The over-representation of zeroes in the data raises the risk that standard models will fit the data poorly, leading to incorrect effect estimates.
+
+The Vuong test is commonly used to compare zero-inflated versus non-inflated models [@fengComparisonZeroinflatedHurdle2021a]. Comparing the baseline negative binomial model with a zero-inflated model using the same predictors suggests that the zero-inflated model is superior (Vuong z-statistic = -3.67, p = 0.0001). However, when penalized for the number of parameters using BIC, the standard negative binomial model is preferred (Vuong z-statistic = 5.03, p < 0.00001. For this reason, I report results for both sets of models. Crucially, the results are similar in both cases.
+
+```{r zinf, echo=FALSE, message=FALSE, warning=FALSE}
+model.protest.zinb <- zeroinfl(n.events.post ~  winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag  +  polyarchy_noelex.1lag + gdpgro.1lag | v2xel_frefair + gdpgro.1lag, data = vdem_data, dist = "negbin")
+
+model.protest.zinb2 <- zeroinfl(n.events.post ~ v2xel_frefair + winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag + polyarchy_noelex.1lag + gdpgro.1lag | v2xel_frefair + gdpgro.1lag, data = vdem_data, dist = "negbin")
+
+model.protest.zinb3 <- zeroinfl(n.events.post ~ v2xel_frefair + winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag  +  polyarchy_noelex.1lag + gdpgro.1lag | 1, data = vdem_data, dist = "negbin")
+
+
+model.protest.zinb4 <- zeroinfl(n.events.post ~ v2xel_frefair + winner.share.upd +  v2cacamps.1lag + presidential + physinteg.1lag  + polyarchy_noelex.1lag + gdpgro.1lag + n.events.pre | 1, data = vdem_data, dist = "negbin")
+
+model.protest.zinb5 <- zeroinfl(n.events.post ~ v2xel_frefair + winner.share.upd +  v2cacamps.1lag + presidential + physinteg.1lag + polyarchy_noelex.1lag + gdpgro.1lag + n.events.pre | v2xel_frefair + gdpgro.1lag, data = vdem_data, dist = "negbin")
+```
+
+```{r zinbtable, echo=FALSE}
+models <- list()
+models[["10"]] <- model.protest.zinb
+models[["11"]] <- model.protest.zinb2
+models[["12"]] <- model.protest.zinb3
+models[["13"]] <- model.protest.zinb4
+#models[["14"]] <- model.protest.zinb5
+
+
+
+
+modelsummary::modelsummary(models, stars = T, title = "Zero-inflated negative binomial models of protest event count", gof_omit = "R2|RMSE")
+```
+
+Table \@ref(tab:zinbtable) reports the results. A zero-inflated model breaks attributes the number of zeroes in the data to two sources: structural zeroes and sampling zeroes. Structural zeroes are derived from observations with no positive probability of protest.^[One way to interpret such a structural zero in this context could be cases where 'no protest' is overdetermined; for instance, in cases where elections were free and fair, the winner won a large majority, and social grievances are low. Alternatively, the likelihood of mass protest could approach zero in cases where repression is severe and widespread.] Sample zeroes are derived from cases with a positive probability of protest, but the number of protest events happened to be zero.  For Models 10 and 11, the zero-inflated portion of the model is conditional on how free and fair the election was, and lagged GDP per capita, reflecting the theory in the paper. Models 12 and 13 include the intercept only in the zero-inflated portion, controlling for the average probability that an observation is a structural (rather than sampling) zero. Model 13 includes a control for the number of pre-election protests. As the table shows, polarization is associated with an increasing number of post-election protests, even after accounting for the 'excess' zeroes in the distribution. 
+
+
+
+```{r hurdle, eval=FALSE, echo=FALSE, message=FALSE, include=FALSE}
+
+
+
+
+model.protest.count <- hurdle(n.events.post ~  winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag, data = vdem_data, dist = "negbin", zero.dist = "binomial" )
+summary(model.protest.count)
+
+hurdlePart <- glm(formula = I(n.events.post>0) ~ winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag, data = vdem_data,
+                  family  = binomial(link = "logit"))
+coef(summary(hurdlePart))  #This confirms how to interpret the bottom part of the hurdle summary: the binomial is looking for successes (i.e. protest count > 0) So polarization is associated with greater likelihood of initiation, but not count.
+
+expCoef <- exp(coef((model.protest.count)))
+expCoef <- matrix(expCoef, ncol = 2)
+rownames(expCoef) <- names(coef(hurdlePart))
+colnames(expCoef) <- c("Count_model","Zero_hurdle_model")
+expCoef
+
+
+model.protest.count2 <- hurdle(n.events.post ~ v2xel_frefair + winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag, data = vdem_data, dist = "negbin", zero.dist = "binomial" )
+summary(model.protest.count2)
+
+model.protest.count3 <- hurdle(n.events.post ~ v2xel_frefair + winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag, data = vdem_data  %>% filter(inc.lose == 0), dist = "negbin", zero.dist = "binomial")
+summary(model.protest.count2)
+
+
+model.protest.count4 <- hurdle(n.events.post ~ v2xel_frefair + winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag + n.events.pre, data = vdem_data, dist = "negbin", zero.dist = "binomial")
+summary(model.protest.count4)
+```
+
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+model_wolf.zinb <- zeroinfl(protested_clean_count ~ winner.share.upd + gdpgro.1lag + polyarchy_noelex.1lag  + physinteg.1lag + unscheduled_election + presidential +  v2cacamps.1lag + I(v2cacamps.1lag^2) | 1, data = vdem_data, dist="negbin" )
+
+model_conflict.zinb <- zeroinfl(mutual_conflict ~ winner.share.upd + presidential + polyarchy_noelex.1lag + physinteg.1lag + unscheduled_election + v2cacamps.1lag | 1, data = vdem_data, dist= "negbin")
+```
+
+
+```{r zinbtable2, echo=FALSE, message=FALSE, warning=FALSE}
+models <- list()
+models[["14"]] <- model_wolf.zinb
+models[["15"]] <- model_conflict.zinb
+
+
+
+
+
+modelsummary::modelsummary(models, stars = T, title = "Zero-inflated negative binomial models of 'crying wolf' and 'mutual conflict' protest count", gof_omit = "R2|RMSE")
+```
+
+The results are also consistent for zero-inflated models of specific types of protest events. In the main text, increasing polarization is shown to be associated with more protest in the 'mutual conflict' scenario where elections are manipulated. It is shown to have a non-linear relationship with protest count in the 'crying wolf' scenario, where elections were clean but alleged to be rigged by the losing party. The same patterns appear in Table \@ref(tab:zinbtable2), where zero-inflated negative binomial models are employed with intercept terms only for the prediction of structural zeroes.^[As above, this controls for the average probability of structural zeroes across all observations.] 
+
+## Controling for international election monitors
+
+Decision 2/10/26: For now, do not include monitors. If asked by reviewers, refer to this section to build out response in appendix. Including monitors mostly preserves the result, but I think it is a bad idea as it is not a confounder and may be a mediator (part of the effect of polarization on protest goes through manipulation, and part of the effect of manipulation on protest goes through observers.)
+
+At first glance, it seems reasonable to control for the presence of international election monitors in these models. However, whether this is the appropriate modeling strategy depends on how the analyst conceives of the relationship between polarization, monitoring, manipulation, and protest. It is unlikely that the presence of international observers is a common cause of both the level of polarization and the level of protest, a situation in which controlling for observers would be necessary. 
+
+It is debatable whether or not it is important to control for the presence of international election monitors in these models.
+
+Plan is:
+
+- Controlling for observers makes sense if we think the presence of observers affects both the level of manipulation (presumably negatively) and the likelihood / number of protest events (presumably positively). 
+- It doesn't make sense if we think:
+ - It only affects protest likelihood indirectly (reducing it by reducing manipulation), or
+ - It is a mediator for the effect of manipulation on protest: meaning, by exposing manipulation it makes protest more likely
+- This interpretation is most likely given that:
+  - Research shows observers are associated with protest and contentious action
+  - Research shows that observers reduce certain types of manipulation at the polling place, but that incumbents displace manipulation in time, space, and method to avoid this.
+  - In which case, controlling for observers likely introduces bias
+
+\newpage
 
 # References
