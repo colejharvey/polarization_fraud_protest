@@ -422,9 +422,9 @@ These propositions are tested using combined data from the Varieties of Democrac
 
 ## Dependent variables
 
-The first dependent variable in this study, used to test Hypothesis 1, is simply the number of *electoral protests* that occurred after each election observation in the dataset. This count variable is taken from the ECAV dataset, which records an event only if it was public, contentious, and substantively related to an election. Post-election events are coded from election day to 90 days after the election. For this paper, I included only ECAV events coded as "protests," "occupations," or "blockades," and excluded more violent events coded as (e.g.) clashes, riots, or attacks. The total number of events recorded for each window in ECAV makes up the *electoral protest* variable.
+The first dependent variable in this study, used to test Hypothesis 1, is simply the *number of electoral protests* that occurred after each election observation in the dataset. This count variable is taken from the ECAV dataset, which records an event only if it was public, contentious, and substantively related to an election. Post-election events are coded from election day to 90 days after the election. For this paper, I included only ECAV events coded as "protests," "occupations," or "blockades," and excluded more violent events coded as (e.g.) clashes, riots, or attacks. The total number of events recorded for each window in ECAV makes up the *electoral protest* variable.
 
-The ECAV data is more comprehensive than the binary measure of protest included in the NELDA dataset; ECAV records 311 protested elections, while NELDA counts only 237.^[As a robustness check in the appendix, I also use a binary protest variable that takes on a value of 1 if *either* NELDA or ECAV report an instance of protest.] Since this is a count variable, I model it using negative binomial regression. In addition, since elections in this dataset are nested within countries, I include a model with fixed effects by country as a robustness check. 
+The ECAV data is more comprehensive than the binary measure of protest included in the NELDA dataset; ECAV records 311 protested elections, while NELDA counts only 237. Since this is a count variable, I model it using negative binomial regression. In addition, since elections in this dataset are nested within countries, I include a model with fixed effects by country.   
 
 One limitation of ECAV is that, by aiming to exclude 'consolidated' democracies, it excludes several of the oldest liberal democracies. The coding rule in ECAV is that states which were members of the OECD in 1990 are excluded (with the exception of Turkey, which is included). As a result, the United States, Canada, Australia, New Zealand, Japan, and most of Western Europe are excluded. Other countries where the quality of democracy deepened during the study period, such as the new eastern members of the European Union, South Korea, and Chile, are included. Consequently, the results of this study should be interpret with caution regarding the oldest liberal democracies, though not necessarily with regard to liberal democracies generally. Figure \@ref(fig:demhist) shows the distribution of regimes according to the V-Dem index of liberal democracy (v2x_libdem). As the figure shows, more liberal democracies are well-represented in the data, despite the exclusion of the longest-established cases from ECAV.
 
@@ -438,7 +438,7 @@ ggplot(vdem_data, aes(v2x_libdem)) +
 
 The other hypotheses in this study refer to the level of protest when an election is 'clean' or 'manipulated.' In the case of protested elections, the dependent variables are also count variables\textemdash the number of post-election protests. However, whether they occurred in a clean or manipulated election is determined based on the 'v2xel_frefair' variable from V-Dem.  This is a comprehensive measure of overall election integrity, which aggregates measures of electoral management body autonomy and capacity, the integrity of the voter registry, the severity of vote-buying, election fraud, intimidation, and violence, as well as coders' overall evaluation of the election as free and fair. This kind of comprehensive indicator is best suited for the research question, given the variety of regimes included in the dataset. Prior research has shown that the type of election manipulation that governments employ is sensitive to several factors, especially the degree of political openness and competition [@Harvey2019;@asunka2017electoral]. Consequently, while I expect that polarization will be associated with lower election integrity across the board, the specific form of manipulation utilized might vary across countries. For example, in a highly polarized but authoritarian country, we might expect to see more fraud; while in a more democratic country, more legal forms of bias might be introduced. The overall measure will capture both sorts of expected movement. 
 
-First, elections are coded as either clean or manipulated based on the 4-point categorical version of the 'e_v2xel_frefair' variable. *Clean election* is a binary variable that takes on a value of 1 if 'e_v2xel_frefair_4C' equals 1, and 0 otherwise.^[The V-Dem codebook states that values of 1 can be considered "Democratic," while values of 0 can be considered "Autocratic", 0.33 as "Electoral Authoritarian", and 0.67 as "Minimally Democratic".] *Clean protested election* takes the value of the number of post-election protests when clean election = 1 and 0 otherwise. his coding scheme allows for the variable to take on a positive value regardless of whether the incumbent or the challenger protests the election outcome. *Manipulated protested election* takes on the number of post-election protests when *clean election* = 0 and 0 otherwise. These count variables are analyzed using negative binomial regression models. Lastly, unprotested outcomes are treated as binary variables. *Clean unprotested election* takes on a value of 1 when the number of protests is zero and *clean election* = 1. *Manipulated unprotested election* takes on a value of 1 when the number of protests is 0 and *clean election* = 0. These variables are modeled using logistic regression.
+First, elections are coded as either clean or manipulated based on the 4-point categorical version of the 'e_v2xel_frefair' variable. *Clean election* is a binary variable that takes on a value of 1 if 'e_v2xel_frefair_4C' equals 1, and 0 otherwise.^[The V-Dem codebook states that values of 1 can be considered "Democratic," while values of 0 can be considered "Autocratic", 0.33 as "Electoral Authoritarian", and 0.67 as "Minimally Democratic".] *Clean protested election* takes the value of the number of post-election protests when clean election = 1 and 0 otherwise. his coding scheme allows for the variable to take on a positive value regardless of whether the incumbent or the challenger protests the election outcome. *Manipulated protested election* takes on the number of post-election protests when *clean election* = 0 and 0 otherwise. These count variables are analyzed using negative binomial regression models. Lastly, unprotested outcomes are treated as binary variables. *Clean unprotested election* takes on a value of 1 when the number of protests is zero and *clean election* = 1. *Manipulated unprotested election* takes on a value of 1 when the number of protests is 0 and *clean election* = 0. These variables are modeled using logistic regression. As a robustness check in the appendix, I replicate the models of *number of electoral protests* using zero-inflated models, helping to account for the large number of zero-protest years.
 
 
 
@@ -720,7 +720,7 @@ A longstanding view holds that election integrity is bolstered by the likelihood
 
 These hypotheses are borne out in statistical analysis of polarization, protest, and election integrity in 1,502 elections in 149 countries, from 1990 to 2012. When polarization is low, elections are likely to be cleaner and\textemdash when they are clean\textemdash to go un-protested. However, when polarization is high, election integrity suffers and protest becomes more likely in both clean and fraudulent elections. These results have implications for understanding autocratization in the contemporary period, and for improving our understanding of the relationship between election manipulation and protest risk. In turn, they point toward alternative theoretical approaches to the study of election manipulation, and to alternative policy mechanisms for upholding the integrity of elections.
 
-Also note in appropriate place in text that the model is agnostic about centralized vs. mass protest. The theory should apply in either case, so long as the group is affectively polarized--high polarization makes them more willing to take risks.
+<!--Also note in appropriate place in text that the model is agnostic about centralized vs. mass protest. The theory should apply in either case, so long as the group is affectively polarized--high polarization makes them more willing to take risks. -->
 
 \newpage
 
@@ -777,145 +777,7 @@ When polarization is low, protests occur against weaker incumbents more than str
 --In more authoritarian regimes, low impartial admin is a source of strength--so protest is low across the broad. Impartial admin is a source of weakness, so we get more protest and fraud when polarization is high. In more democratic contexts, low impartial admin is a sign of weakness for the incumbent. So we get protest only against weak incumbents when polarization is low, and against strong incumbents only when polarization is high. -->
 
 
-## For appendix
 
-```{r payoffs, echo=FALSE, message=FALSE, results='asis', warning=FALSE}
-library(kableExtra)
-library(tidyverse)
-payoffs <- read.csv(here::here("game_utilities.csv"))
-payoffs <- payoffs %>% rename("Incumbent" = "Incumbent.expected.utility")
-payoffs <- payoffs %>% rename("Opposition" = "Opposition.expected.utility")
-
-payoff_table <- kbl(payoffs, format= "latex", caption = "Expected utilities.", booktabs = T, caption.short =  "Player expected utilities")
-
-payoff_table
-```
-
-
-Incumbent will manipulate when $$(p+f)(q)(1 + B-c) + (p+f)(1-q)(0-c)  > (pq)(1 +B-c)+(p(1-q)(0-c))$$ and hold a clean election otherwise. 
-
-
-## Zero inflation
-
-```{r protestcount, fig.cap="Histogram of post-election protest events", echo=FALSE, message=FALSE, warning=FALSE, echo=FALSE}
-ggplot(vdem_data, mapping = aes(x = n.events.post)) +
-  geom_histogram(binwidth = 1) +
-  labs(x = "N. protest events") + theme_bw()
-```
-
-```{r vuong, echo=FALSE, message=FALSE, include=FALSE}
-model.protest.count <- glm.nb(n.events.post ~  winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +   polyarchy_noelex.1lag + gdpgro.1lag, data = vdem_data )
-
-model.protest.zinb <- zeroinfl(n.events.post ~  winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   + polyarchy_noelex.1lag + gdpgro.1lag | v2xel_frefair + gdpgro.1lag, data = vdem_data, dist = "negbin")
-vuong(model.protest.count, model.protest.zinb)
-```
-
-One of several hypotheses tested in this study is the prediction that the number of post-election protests will increase as political polarization increases. Negative binomial models are used to test this prediction in the main text. However, since the large majority of elections go un-protested, there is a very large percentage of zeroes in the data. Figure \@ref(fig:protestcount) shows this distribution. The over-representation of zeroes in the data raises the risk that standard models will fit the data poorly, leading to incorrect effect estimates.
-
-The Vuong test is commonly used to compare zero-inflated versus non-inflated models [@fengComparisonZeroinflatedHurdle2021a]. Comparing the baseline negative binomial model with a zero-inflated model using the same predictors suggests that the zero-inflated model is superior (Vuong z-statistic = -3.67, p = 0.0001). However, when penalized for the number of parameters using BIC, the standard negative binomial model is preferred (Vuong z-statistic = 5.03, p < 0.00001. For this reason, I report results for both sets of models. Crucially, the results are similar in both cases.
-
-```{r zinf, echo=FALSE, message=FALSE, warning=FALSE}
-model.protest.zinb <- zeroinfl(n.events.post ~  winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag  +  polyarchy_noelex.1lag + gdpgro.1lag | v2xel_frefair + gdpgro.1lag, data = vdem_data, dist = "negbin")
-
-model.protest.zinb2 <- zeroinfl(n.events.post ~ v2xel_frefair + winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag + polyarchy_noelex.1lag + gdpgro.1lag | v2xel_frefair + gdpgro.1lag, data = vdem_data, dist = "negbin")
-
-model.protest.zinb3 <- zeroinfl(n.events.post ~ v2xel_frefair + winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag  +  polyarchy_noelex.1lag + gdpgro.1lag | 1, data = vdem_data, dist = "negbin")
-
-
-model.protest.zinb4 <- zeroinfl(n.events.post ~ v2xel_frefair + winner.share.upd +  v2cacamps.1lag + presidential + physinteg.1lag  + polyarchy_noelex.1lag + gdpgro.1lag + n.events.pre | 1, data = vdem_data, dist = "negbin")
-
-model.protest.zinb5 <- zeroinfl(n.events.post ~ v2xel_frefair + winner.share.upd +  v2cacamps.1lag + presidential + physinteg.1lag + polyarchy_noelex.1lag + gdpgro.1lag + n.events.pre | v2xel_frefair + gdpgro.1lag, data = vdem_data, dist = "negbin")
-```
-
-```{r zinbtable, echo=FALSE}
-models <- list()
-models[["10"]] <- model.protest.zinb
-models[["11"]] <- model.protest.zinb2
-models[["12"]] <- model.protest.zinb3
-models[["13"]] <- model.protest.zinb4
-#models[["14"]] <- model.protest.zinb5
-
-
-
-
-modelsummary::modelsummary(models, stars = T, title = "Zero-inflated negative binomial models of protest event count", gof_omit = "R2|RMSE")
-```
-
-Table \@ref(tab:zinbtable) reports the results. A zero-inflated model breaks attributes the number of zeroes in the data to two sources: structural zeroes and sampling zeroes. Structural zeroes are derived from observations with no positive probability of protest.^[One way to interpret such a structural zero in this context could be cases where 'no protest' is overdetermined; for instance, in cases where elections were free and fair, the winner won a large majority, and social grievances are low. Alternatively, the likelihood of mass protest could approach zero in cases where repression is severe and widespread.] Sample zeroes are derived from cases with a positive probability of protest, but the number of protest events happened to be zero.  For Models 10 and 11, the zero-inflated portion of the model is conditional on how free and fair the election was, and lagged GDP per capita, reflecting the theory in the paper. Models 12 and 13 include the intercept only in the zero-inflated portion, controlling for the average probability that an observation is a structural (rather than sampling) zero. Model 13 includes a control for the number of pre-election protests. As the table shows, polarization is associated with an increasing number of post-election protests, even after accounting for the 'excess' zeroes in the distribution. 
-
-
-
-```{r hurdle, eval=FALSE, echo=FALSE, message=FALSE, include=FALSE}
-
-
-
-
-model.protest.count <- hurdle(n.events.post ~  winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag, data = vdem_data, dist = "negbin", zero.dist = "binomial" )
-summary(model.protest.count)
-
-hurdlePart <- glm(formula = I(n.events.post>0) ~ winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag, data = vdem_data,
-                  family  = binomial(link = "logit"))
-coef(summary(hurdlePart))  #This confirms how to interpret the bottom part of the hurdle summary: the binomial is looking for successes (i.e. protest count > 0) So polarization is associated with greater likelihood of initiation, but not count.
-
-expCoef <- exp(coef((model.protest.count)))
-expCoef <- matrix(expCoef, ncol = 2)
-rownames(expCoef) <- names(coef(hurdlePart))
-colnames(expCoef) <- c("Count_model","Zero_hurdle_model")
-expCoef
-
-
-model.protest.count2 <- hurdle(n.events.post ~ v2xel_frefair + winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag, data = vdem_data, dist = "negbin", zero.dist = "binomial" )
-summary(model.protest.count2)
-
-model.protest.count3 <- hurdle(n.events.post ~ v2xel_frefair + winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag, data = vdem_data  %>% filter(inc.lose == 0), dist = "negbin", zero.dist = "binomial")
-summary(model.protest.count2)
-
-
-model.protest.count4 <- hurdle(n.events.post ~ v2xel_frefair + winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag + n.events.pre, data = vdem_data, dist = "negbin", zero.dist = "binomial")
-summary(model.protest.count4)
-```
-
-
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-model_wolf.zinb <- zeroinfl(protested_clean_count ~ winner.share.upd + gdpgro.1lag + polyarchy_noelex.1lag  + physinteg.1lag + unscheduled_election + presidential +  v2cacamps.1lag + I(v2cacamps.1lag^2) | 1, data = vdem_data, dist="negbin" )
-
-model_conflict.zinb <- zeroinfl(mutual_conflict ~ winner.share.upd + presidential + polyarchy_noelex.1lag + physinteg.1lag + unscheduled_election + v2cacamps.1lag | 1, data = vdem_data, dist= "negbin")
-```
-
-
-```{r zinbtable2, echo=FALSE, message=FALSE, warning=FALSE}
-models <- list()
-models[["14"]] <- model_wolf.zinb
-models[["15"]] <- model_conflict.zinb
-
-
-
-
-
-modelsummary::modelsummary(models, stars = T, title = "Zero-inflated negative binomial models of 'crying wolf' and 'mutual conflict' protest count", gof_omit = "R2|RMSE")
-```
-
-The results are also consistent for zero-inflated models of specific types of protest events. In the main text, increasing polarization is shown to be associated with more protest in the 'mutual conflict' scenario where elections are manipulated. It is shown to have a non-linear relationship with protest count in the 'crying wolf' scenario, where elections were clean but alleged to be rigged by the losing party. The same patterns appear in Table \@ref(tab:zinbtable2), where zero-inflated negative binomial models are employed with intercept terms only for the prediction of structural zeroes.^[As above, this controls for the average probability of structural zeroes across all observations.] 
-
-## Controling for international election monitors
-
-Decision 2/10/26: For now, do not include monitors. If asked by reviewers, refer to this section to build out response in appendix. Including monitors mostly preserves the result, but I think it is a bad idea as it is not a confounder and may be a mediator (part of the effect of polarization on protest goes through manipulation, and part of the effect of manipulation on protest goes through observers.)
-
-At first glance, it seems reasonable to control for the presence of international election monitors in these models. However, whether this is the appropriate modeling strategy depends on how the analyst conceives of the relationship between polarization, monitoring, manipulation, and protest. It is unlikely that the presence of international observers is a common cause of both the level of polarization and the level of protest, a situation in which controlling for observers would be necessary. 
-
-It is debatable whether or not it is important to control for the presence of international election monitors in these models.
-
-Plan is:
-
-- Controlling for observers makes sense if we think the presence of observers affects both the level of manipulation (presumably negatively) and the likelihood / number of protest events (presumably positively). 
-- It doesn't make sense if we think:
- - It only affects protest likelihood indirectly (reducing it by reducing manipulation), or
- - It is a mediator for the effect of manipulation on protest: meaning, by exposing manipulation it makes protest more likely
-- This interpretation is most likely given that:
-  - Research shows observers are associated with protest and contentious action
-  - Research shows that observers reduce certain types of manipulation at the polling place, but that incumbents displace manipulation in time, space, and method to avoid this.
-  - In which case, controlling for observers likely introduces bias
   
 
 

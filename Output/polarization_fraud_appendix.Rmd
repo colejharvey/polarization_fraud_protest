@@ -1,0 +1,286 @@
+---
+title: "Appendix: Can protest risk be too high to deter election manipulation? How polarization worsens election integrity"
+output:
+    bookdown::pdf_document2: default
+linkcolor: blue
+bibliography: C:/Users/colej/Documents/Research projects/bib_ch.bib
+#biblio-style: "apalike"
+fontsize: 12pt
+link-citations: yes
+toc: true
+csl: C:/Users/colej/Documents/Research projects/ji_manipulation_protest/american-journal-of-political-science.csl
+header-includes: 
+  \usepackage[section]{placeins}
+  \usepackage{booktabs}
+
+---
+
+# Expected utilities
+
+```{r payoffs, echo=FALSE, message=FALSE, results='asis', warning=FALSE}
+library(kableExtra)
+library(tidyverse)
+payoffs <- read.csv(here::here("game_utilities.csv"))
+payoffs <- payoffs %>% rename("Incumbent" = "Incumbent.expected.utility")
+payoffs <- payoffs %>% rename("Opposition" = "Opposition.expected.utility")
+
+payoff_table <- kbl(payoffs, format= "latex", caption = "Expected utilities.", booktabs = T, caption.short =  "Player expected utilities")
+
+payoff_table
+```
+
+# Proof of Proposition 1
+
+The subgame perfect equilibria to the game are found via backward induction. As noted in the main text, the opposition will protest if and only if $q < \frac{(B - c + 1)}{(B+1)} \equiv q_p$. It is straightforward to see that if the opposition will *not* protest ($q > q_p$), the incumbent will always prefer to manipulate so that it increases its probability of winning the election. 
+
+On the other hand, if $q < q_p$, the incumbent will choose to manipulate when the expected utility of committing fraud (and increasing the likelihood of proceeding to the protest stage) exceeds the expected utility of taking its chances in a clean election. Referring to the expected utilities in Table \@ref(tab:payoffs), the incumbent will prefer to manipulate when the expected value of nodes $g + h + b$ exceeds the expected value of nodes $e + f + a$. The payoffs at nodes *a* and *b* are normalized to zero, which means that the incumbent will manipulate when $$(p+f)(q)(1 + B-c) + (p+f)(1-q)(-c)  > (pq)(1 +B-c)+p(1-q)(-c)$$ and hold a clean election otherwise. Under the conditions of the game, where *B*, *f*, and *c* are constrained to take on positive values, solving the inequality for q produces a unique solution:
+
+\begin{equation}
+q > \frac{(c)}{(B+1)} \equiv q_f 
+(\#eq:fraud)
+\end{equation}
+
+We can now characterize equilibrium strategies. The opposition's strategy following an incumbent victory is
+
+\[
+\sigma_O(q) =
+\begin{cases}
+\text{Protest} & \text{if } q < q_p, \\
+\text{Accept}  & \text{if } q \ge q_p.
+\end{cases}
+\]
+
+Anticipating this response, the incumbent's strategy is
+\[
+\sigma_I(q) =
+\begin{cases}
+\text{Manipulate} & \text{if } q > q_f, \\
+\text{Clean election} & \text{if } q \le q_f.
+\end{cases}
+\]
+
+Combining these strategy profiles yields the four equilibrium regions described in Proposition 1. In each region, no player has a profitable deviation in any subgame. Therefore, the strategy profile constitutes a subgame perfect equilibrium.
+
+
+## Zero inflation
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(here)
+library(MASS)
+library(pscl)
+library(lme4)
+
+vdem_data <- read.csv(here("Data", "vdem_protest.csv"))
+
+vdem_data <- vdem_data %>% mutate(winner.share.upd = ifelse(is.na(winner.share.upd) == T, winner.margin, winner.share.upd))
+
+
+### Exclude old OECD cases, which are not included in ECAV and thus have 0 protests by artefact and not necessarily in reality.
+
+
+vdem_data <- vdem_data %>% mutate(old_oecd = ifelse(country == "United Kingdom" | country == "Belgium" |
+                                                      country == "Austria" | country == "Denmark" |
+                                                      country == "Finland" | country == "Iceland" | 
+                                                      country == "Luxembourg" | country == "New Zealand" |
+                                                      country == "Norway" | country == "United States of America" |
+                                                      country == "Portugal" | country == "Sweden" |
+                                                      country == "Switzerland" | country == "Canada" |
+                                                      country == "Australia" | country == "German Federal Republic" |
+                                                      country == "Italy" | country == "Ireland" |
+                                                      country == "Japan" | country == "Netherlands" |
+                                                      country == "Spain" | country == "Greece" | country == "France", 1, 0))
+
+vdem_data <- vdem_data %>% filter(old_oecd == 0)
+
+
+## Other subsets
+vdem_libdems <- vdem_data %>% filter(v2x_regime == 3)
+vdem_data_nolib <- vdem_data %>% filter(v2x_regime < 3)
+
+vdem_data <- vdem_data %>% mutate(any_protest = ifelse(d.events.num > 0, 1, 0))
+
+
+
+vdem_data <- vdem_data %>% mutate(clean_elex = ifelse(is.na(e_v2xel_frefair_4C)==T, NA, ifelse(e_v2xel_frefair_4C == 1, 1, 0)))
+
+vdem_data <- vdem_data %>% mutate(protested_clean_count = ifelse(is.na(any_protest) == T, NA, ifelse(clean_elex == 1 & any_protest == 1, n.events.post, 0)))
+
+
+vdem_data <- vdem_data %>% mutate(clean_no_protest = ifelse(is.na(any_protest) == T, NA, ifelse(clean_elex == 1 & any_protest == 0, 1, 0)))
+
+
+
+vdem_data <- vdem_data %>% mutate(rigged_no_protest = ifelse(is.na(any_protest) == T, NA, ifelse(clean_elex == 0 & any_protest == 0, 1, 0)))
+
+
+
+vdem_data <- vdem_data %>% mutate(mutual_conflict = ifelse(is.na(any_protest) == T, NA, ifelse(clean_elex == 0 & any_protest == 1, n.events.post, 0)))
+
+vdem_data <- vdem_data %>% mutate(protested_clean = ifelse(is.na(any_protest) == T, NA, ifelse(clean_elex == 1 & any_protest == 1, 1, 0)))
+
+```
+
+
+```{r protestcount, fig.cap="Histogram of post-election protest events", echo=FALSE, message=FALSE, warning=FALSE, echo=FALSE}
+ggplot(vdem_data, mapping = aes(x = n.events.post)) +
+  geom_histogram(binwidth = 1) +
+  labs(x = "N. protest events") + theme_bw()
+```
+
+```{r vuong, echo=FALSE, message=FALSE, include=FALSE}
+model.protest.count <- glm.nb(n.events.post ~  winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +   polyarchy_noelex.1lag + gdpgro.1lag, data = vdem_data )
+
+model.protest.zinb <- zeroinfl(n.events.post ~  winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   + polyarchy_noelex.1lag + gdpgro.1lag | v2xel_frefair + gdpgro.1lag, data = vdem_data, dist = "negbin")
+vuong(model.protest.count, model.protest.zinb)
+```
+
+One of several hypotheses tested in this study is the prediction that the number of post-election protests will increase as political polarization increases. Negative binomial models are used to test this prediction in the main text. However, since the large majority of elections go un-protested, there is a very large percentage of zeroes in the data. Figure \@ref(fig:protestcount) shows this distribution. The over-representation of zeroes in the data raises the risk that standard models will fit the data poorly, leading to incorrect effect estimates.
+
+The Vuong test is commonly used to compare zero-inflated versus non-inflated models [@fengComparisonZeroinflatedHurdle2021a]. Comparing the baseline negative binomial model with a zero-inflated model using the same predictors suggests that the zero-inflated model is superior (Vuong z-statistic = -3.67, p = 0.0001). However, when penalized for the number of parameters using BIC, the standard negative binomial model is preferred (Vuong z-statistic = 5.03, p < 0.00001. For this reason, I report results for both sets of models. Crucially, the results are similar in both cases.
+
+```{r zinf, echo=FALSE, message=FALSE, warning=FALSE}
+model.protest.zinb <- zeroinfl(n.events.post ~  winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag  +  polyarchy_noelex.1lag + gdpgro.1lag | v2xel_frefair + gdpgro.1lag, data = vdem_data, dist = "negbin")
+
+model.protest.zinb2 <- zeroinfl(n.events.post ~ v2xel_frefair + winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag + polyarchy_noelex.1lag + gdpgro.1lag | v2xel_frefair + gdpgro.1lag, data = vdem_data, dist = "negbin")
+
+model.protest.zinb3 <- zeroinfl(n.events.post ~ v2xel_frefair + winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag  +  polyarchy_noelex.1lag + gdpgro.1lag | 1, data = vdem_data, dist = "negbin")
+
+
+model.protest.zinb4 <- zeroinfl(n.events.post ~ v2xel_frefair + winner.share.upd +  v2cacamps.1lag + presidential + physinteg.1lag  + polyarchy_noelex.1lag + gdpgro.1lag + n.events.pre | 1, data = vdem_data, dist = "negbin")
+
+model.protest.zinb5 <- zeroinfl(n.events.post ~ v2xel_frefair + winner.share.upd +  v2cacamps.1lag + presidential + physinteg.1lag + polyarchy_noelex.1lag + gdpgro.1lag + n.events.pre | v2xel_frefair + gdpgro.1lag, data = vdem_data, dist = "negbin")
+```
+
+```{r zinbtable, echo=FALSE}
+models <- list()
+models[["10"]] <- model.protest.zinb
+models[["11"]] <- model.protest.zinb2
+models[["12"]] <- model.protest.zinb3
+models[["13"]] <- model.protest.zinb4
+#models[["14"]] <- model.protest.zinb5
+
+
+
+
+modelsummary::modelsummary(models, stars = T, title = "Zero-inflated negative binomial models of protest event count", gof_omit = "R2|RMSE")
+```
+
+Table \@ref(tab:zinbtable) reports the results. A zero-inflated model breaks attributes the number of zeroes in the data to two sources: structural zeroes and sampling zeroes. Structural zeroes are derived from observations with no positive probability of protest.^[One way to interpret such a structural zero in this context could be cases where 'no protest' is overdetermined; for instance, in cases where elections were free and fair, the winner won a large majority, and social grievances are low. Alternatively, the likelihood of mass protest could approach zero in cases where repression is severe and widespread.] Sample zeroes are derived from cases with a positive probability of protest, but the number of protest events happened to be zero.  For Models 10 and 11, the zero-inflated portion of the model is conditional on how free and fair the election was, and lagged GDP per capita, reflecting the theory in the paper. Models 12 and 13 include the intercept only in the zero-inflated portion, controlling for the average probability that an observation is a structural (rather than sampling) zero. Model 13 includes a control for the number of pre-election protests. As the table shows, polarization is associated with an increasing number of post-election protests, even after accounting for the 'excess' zeroes in the distribution. 
+
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+model_wolf.zinb <- zeroinfl(protested_clean_count ~ winner.share.upd + gdpgro.1lag + polyarchy_noelex.1lag  + physinteg.1lag + unscheduled_election + presidential +  v2cacamps.1lag + I(v2cacamps.1lag^2) | 1, data = vdem_data, dist="negbin" )
+
+model_conflict.zinb <- zeroinfl(mutual_conflict ~ winner.share.upd + presidential + polyarchy_noelex.1lag + physinteg.1lag + unscheduled_election + v2cacamps.1lag | 1, data = vdem_data, dist= "negbin")
+```
+
+
+```{r zinbtable2, echo=FALSE, message=FALSE, warning=FALSE}
+models <- list()
+models[["14"]] <- model_wolf.zinb
+models[["15"]] <- model_conflict.zinb
+
+
+
+
+
+modelsummary::modelsummary(models, stars = T, title = "Zero-inflated negative binomial models of 'crying wolf' and 'mutual conflict' protest count", gof_omit = "R2|RMSE")
+```
+
+The results are also consistent for zero-inflated models of specific types of protest events. In the main text, increasing polarization is shown to be associated with more protest in the 'mutual conflict' scenario where elections are manipulated. It is shown to have a non-linear relationship with protest count in the 'crying wolf' scenario, where elections were clean but alleged to be rigged by the losing party. The same patterns appear in Table \@ref(tab:zinbtable2), where zero-inflated negative binomial models are employed with intercept terms only for the prediction of structural zeroes.^[As above, this controls for the average probability of structural zeroes across all observations.] 
+
+<!--
+
+
+## Controling for international election monitors
+
+Decision 2/10/26: For now, do not include monitors. If asked by reviewers, refer to this section to build out response in appendix. Including monitors mostly preserves the result, but I think it is a bad idea as it is not a confounder and may be a mediator (part of the effect of polarization on protest goes through manipulation, and part of the effect of manipulation on protest goes through observers.)
+
+At first glance, it seems reasonable to control for the presence of international election monitors in these models. However, whether this is the appropriate modeling strategy depends on how the analyst conceives of the relationship between polarization, monitoring, manipulation, and protest. It is unlikely that the presence of international observers is a common cause of both the level of polarization and the level of protest, a situation in which controlling for observers would be necessary. 
+
+It is debatable whether or not it is important to control for the presence of international election monitors in these models.
+
+Plan is:
+
+- Controlling for observers makes sense if we think the presence of observers affects both the level of manipulation (presumably negatively) and the likelihood / number of protest events (presumably positively). 
+- It doesn't make sense if we think:
+ - It only affects protest likelihood indirectly (reducing it by reducing manipulation), or
+ - It is a mediator for the effect of manipulation on protest: meaning, by exposing manipulation it makes protest more likely
+- This interpretation is most likely given that:
+  - Research shows observers are associated with protest and contentious action
+  - Research shows that observers reduce certain types of manipulation at the polling place, but that incumbents displace manipulation in time, space, and method to avoid this.
+  - In which case, controlling for observers likely introduces bias
+-->
+
+# Polarization and manipulation severity
+
+One implication of the theory (though not one that emerges from the formal model) is that greater affective polarization should be associated with lower election integrity. The intuition here is that the more incumbents value keeping the opposition out of office, the more they will seek to tip the electoral scales in their own favor. Moreover, as discussed in the main text, the incumbent's own supporters will be more likely to approve of such measures as affective polarization increases. This implication is tested here using the overall measure of election integrity from V-Dem ('v2xel_frefair') as a dependent variable. Since the measure is continuous and the observations are nested within countries, I use multilevel models with random intercepts by country here.^[The random intercepts allow for different 'baseline' levels of election integrity in each country.]
+
+Table \@ref(tab:manipulation-table) shows the results of these models of overall election integrity. The models include controls for alternative causes of election manipulation. These include the level of repression (lagged), the degree of opposition contestation in the national legislature (lagged), judicial independence (lagged), the presence of international monitors, GDP per capita (lagged), urban population share, the additive V-Dem polyarchy measure (lagged, and minus the electoral component), and whether or not the election is presidential. Model 17 includes the number of pre-election protests as an additional control. Most of these variables are described in the main text; the exceptions are opposition contestation ('v2lgoppart' in V-Dem), international observers ('v2elintmon' in V-Dem), and judicial independence. The latter is measured using the latent judicial independence measure developed by Linzer and Staton [-@Linzer2015]. 
+
+
+As predicted, in both models, affective polarization is negatively associated with overall election integrity. 
+
+
+
+
+```{r echo=FALSE}
+
+
+
+
+
+m1 <- lmer(v2xel_frefair ~ physinteg.1lag + legcon.1lag + lji.lag + v2elintmon + gdpgro.1lag +    + presidential   + urban.pct + v2cacamps.1lag + polyarchy_noelex.1lag + (1 | stateid), data = vdem_data)
+
+#summary(m1)
+
+
+
+m1b <- lmer(v2xel_frefair ~ physinteg.1lag + legcon.1lag + lji.lag + v2elintmon + gdpgro.1lag +  presidential   + urban.pct + v2cacamps.1lag + polyarchy_noelex.1lag + n.events.pre + (1 | stateid), data = vdem_data)
+
+#summary(m1b)
+
+```
+
+
+```{r manipulation-table, echo=FALSE}
+models <- list()
+models[["16"]] <- m1
+models[["17"]] <- m1b
+
+
+
+modelsummary::modelsummary(models, stars = T, title = "Multilevel regression models of overall election integrity (random intercepts by country)", gof_omit = "R2|RM",
+                           coef_rename = 
+                             c("physinteg.1lag" = "Physical integrity (lag)",
+                               "legcon.1lag" = "Legislative constraints (lag)" , "lji.lag" = "Latent judicial independence (lag)" , "v2elintmon" = "Intnl. election observers",  "gdpgro.1lag" = "GDP growth (lag)",  "presidential" = "Presidential", "inc.termlimit.num" = "Incumbent term limited",  "urban.pct" = "Urban percent",  "v2cacamps.1lag" = "Affective polarization (lag)", "polyarchy_noelex.1lag" = "Democracy index (lag)",
+                               "n.events.pre" = "N. pre-election protest"))
+```
+
+<!-- # Binary indicator of protest
+
+```{r}
+vdem_data <- vdem_data %>% mutate(protest_comprehensive = ifelse(protests == 1 | any_protest == 1, 1, 0))
+
+
+model.protest.binary <- glm(protest_comprehensive ~  winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag, data = vdem_data )
+#summary(model.protest.binary)
+
+
+model.protest.binary2 <- glm(protest_comprehensive ~ v2xel_frefair + winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag, data = vdem_data )
+#summary(model.protest.binary2)
+
+model.protest.binary3 <- glm(protest_comprehensive ~ v2xel_frefair + winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag, data = vdem_data  %>% filter(inc.lose == 0))
+#summary(model.protest.binary2)
+
+
+model.protest.binary4 <- glm(protest_comprehensive ~ v2xel_frefair + winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag + n.events.pre, data = vdem_data)
+
+## With FE
+
+model.protest.binary.fe <- glm(protest_comprehensive ~ v2xel_frefair +  winner.share.upd + v2cacamps.1lag + presidential + physinteg.1lag   +  urban.pct +  unscheduled_election + polyarchy_noelex.1lag + gdpgro.1lag  + as.factor(country), data = vdem_data)
+
+```
+
+-->
