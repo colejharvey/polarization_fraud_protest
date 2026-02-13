@@ -62,7 +62,7 @@ Anticipating this response, the incumbent's strategy is
 Combining these strategy profiles yields the four equilibrium regions described in Proposition 1. In each region, no player has a profitable deviation in any subgame. Therefore, the strategy profile constitutes a subgame perfect equilibrium.
 
 
-## Zero inflation
+# Zero inflation
 ```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(here)
